@@ -8,7 +8,7 @@ from tgBot.functions.data_base_functions import DbFunc
 class SendData(models.Model):
     obj = DbFunc()
     text = models.TextField('Текст', blank=True, null=True)
-    file = models.FileField('Файл',  blank=True, null=True, upload_to=obj.get_upload_path)
+    file = models.FileField('Файл',  blank=True, null=True)
     description = models.CharField('Описание', max_length=15, null=True)
 
     class Meta:

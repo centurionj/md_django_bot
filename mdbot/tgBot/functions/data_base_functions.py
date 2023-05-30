@@ -2,13 +2,8 @@ from django.db.models.signals import pre_delete, pre_save
 from django.dispatch.dispatcher import receiver
 from django.core.files.storage import default_storage
 
-import os
-
 
 class DbFunc:
-    def get_upload_path(self, instance, filename):
-        return os.path.join('mdbot/documents', filename)
-
     def delete_files(self, name):
         @receiver(pre_delete, sender=name)
         def delete_file(sender, instance, **kwargs):
