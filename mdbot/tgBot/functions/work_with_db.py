@@ -14,7 +14,7 @@ class Sender:
             s = f"\n{d.text}\n\n"
             try:
                 media = d.file.file
-                if Path(f'{media}').suffix.lower() in ['.mp4', '.mov', '.docx', '.pdf',]:
+                if Path(f'{media}').suffix.lower() in ['.mp4', '.mov', '.docx', '.pdf']:
                     self.bot.send_document(self.message.chat.id, media, caption=s)
                 else:
                     self.bot.send_photo(self.message.chat.id, media, caption=s)
