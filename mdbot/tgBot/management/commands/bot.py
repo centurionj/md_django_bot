@@ -11,8 +11,6 @@ from tgBot.functions.bot_func import BotFuncs
 bot = TeleBot(token=settings.TOKEN)
 
 
-
-
 @bot.message_handler(commands=['start'])
 def start(message):
     obj = Sender(message, bot)
@@ -80,9 +78,9 @@ def bot_massage(message):
 
 class Command(BaseCommand):
     help = 'Лагерный бот'
-    # bot.polling(none_stop=True)
-    while True:
-        try:
-            bot.polling(none_stop=True)
-        except Exception as e:
-            print(str(e))
+    bot.polling(none_stop=True)
+    # while True:
+    #     try:
+    #         bot.polling(none_stop=True)
+    #     except Exception as e:
+    #         print(str(e))

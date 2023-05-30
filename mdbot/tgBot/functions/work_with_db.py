@@ -14,8 +14,7 @@ class Sender:
             s = f"\n{d.text}\n\n"
             try:
                 media = d.file.file
-                if Path(f'{media}').suffix.lower() == '.mp4' or Path(f'{media}').suffix == '.mov' \
-                        or Path(f'{media}').suffix == '.pdf' or Path(f'{media}').suffix == '.docx':
+                if Path(f'{media}').suffix.lower() in ['.mp4', '.mov', '.docx', '.pdf',]:
                     self.bot.send_document(self.message.chat.id, media, caption=s)
                 else:
                     self.bot.send_photo(self.message.chat.id, media, caption=s)
@@ -28,7 +27,7 @@ class Sender:
         for d in data:
             try:
                 media = d.file.file
-                if Path(f'{media}').suffix == '.pdf' or Path(f'{media}').suffix == '.docx':
+                if Path(f'{media}').suffix in ['.pdf', '.docx']:
                     self.bot.send_document(self.message.chat.id, media)
             except Exception as e:
                 print(e)
@@ -43,8 +42,7 @@ class Sender:
                 s = f"\n{sp.text}\n\n"
                 try:
                     media = sp.file.file
-                    if Path(f'{media}').suffix.lower() == '.mp4' or Path(f'{media}').suffix == '.mov' \
-                            or Path(f'{media}').suffix == '.pdf' or Path(f'{media}').suffix == '.docx':
+                    if Path(f'{media}').suffix.lower() in ['.mp4', '.mov', '.docx']:
                         self.bot.send_document(to_chat_id, media, caption=s)
                     else:
                         self.bot.send_photo(to_chat_id, media, caption=s)

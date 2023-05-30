@@ -9,28 +9,31 @@ class BotFuncs:
 
     def menu(self):
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=3)
-        workers = types.KeyboardButton('Работникам')
-        parents = types.KeyboardButton('Родителям')
-        child = types.KeyboardButton('Детям')
-        news = types.KeyboardButton('Новости')
-        reviews = types.KeyboardButton('Обратная связь')
-        prop = types.KeyboardButton('Вакансии')
-        markup.add(workers, parents, child, news, reviews, prop)
+        markup.add(
+            types.KeyboardButton('Работникам'),
+            types.KeyboardButton('Родителям'),
+            types.KeyboardButton('Детям'),
+            types.KeyboardButton('Новости'),
+            types.KeyboardButton('Обратная связь'),
+            types.KeyboardButton('Вакансии')
+        )
         self.bot.send_message(self.message.chat.id, 'Выбери раздел:', reply_markup=markup)
 
     def parent_btns(self):
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=3)
-        item1 = types.KeyboardButton('О сменах')
-        item2 = types.KeyboardButton('Документы')
-        item3 = types.KeyboardButton('Стоимость')
-        item4 = types.KeyboardButton('Назад')
-        markup.add(item1, item2, item3, item4)
+        markup.add(
+            types.KeyboardButton('О сменах'),
+            types.KeyboardButton('Документы'),
+            types.KeyboardButton('Стоимость'),
+            types.KeyboardButton('Назад'),
+        )
         self.bot.send_message(self.message.chat.id, 'Отлично, выбери пункт:', reply_markup=markup)
 
     def back_btn(self):
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=3)
-        item = types.KeyboardButton('Назад')
-        markup.add(item)
+        markup.add(
+            types.KeyboardButton('Назад')
+        )
         self.bot.send_message(self.message.chat.id, 'Напиши нам свой честный отзыв, критику или предложения!',
                          reply_markup=markup)
 
