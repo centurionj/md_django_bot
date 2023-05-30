@@ -29,7 +29,6 @@ def start(message):
                      Больше информации на сайте https://mirdetstvakhv.ru""")
 
     time.sleep(1)
-
     bot_foo.menu()
 
 
@@ -38,39 +37,42 @@ def bot_massage(message):
     obj = Sender(message, bot)
     bot_foo = BotFuncs(message, bot)
 
-    if message.text.lower() == 'работникам':
+    text = message.text.lower()
+
+    if text == 'работникам':
 
         obj.send_mes(1)
         bot.send_message(message.chat.id, 'Документы:')
         # docs for workers
         for n in range(2, 5):
             obj.send_doc(n)
-    elif message.text.lower() == 'детям':
+    elif text == 'детям':
         obj.send_mes(5)
-    elif message.text.lower() == 'вакансии':
+    elif text == 'вакансии':
         obj.send_mes(6)
-    elif message.text.lower() == 'новости':
+    elif text == 'новости':
         obj.send_mes(7)
-    elif message.text.lower() == 'родителям':
+    elif text == 'родителям':
         obj.send_mes(8)
         bot_foo.parent_btns()
-    elif message.text.lower() == 'о сменах':
+    elif text == 'о сменах':
         obj.send_mes(9)
         obj.send_doc(10)
     # docs for parents
-    elif message.text.lower() == 'документы':
+    elif text == 'документы':
         for n in range(11, 17):
             obj.send_doc(n)
-    elif message.text.lower() == 'стоимость':
+    elif text == 'стоимость':
         obj.send_doc(17)
-    elif message.text.lower() == 'спам':
+    elif text == 'спам':
         obj.spam()
-    elif message.text.lower() == 'назад':
+    elif text == 'назад':
         bot_foo.menu()
-    elif message.text.lower() == 'обратная связь':
+    elif text == 'обратная связь':
 
         bot_foo.back_btn()
         send = bot.send_message(message.chat.id, 'Если выбрал этот пункт по ошибке, нажми «Назад»')
+        print(1)
         bot.register_next_step_handler(send, bot_foo.back_request)
     else:
         obj.send_mes(19, message, bot)
@@ -79,8 +81,10 @@ def bot_massage(message):
 class Command(BaseCommand):
     help = 'Лагерный бот'
     bot.polling(none_stop=True)
-    # while True:
-    #     try:
-    #         bot.polling(none_stop=True)
-    #     except Exception as e:
-    #         print(str(e))
+
+    # def handle(self, *args, **options):
+    #     while True:
+    #         try:
+    #             bot.polling(none_stop=True)
+    #         except Exception as e:
+    #             print(str(e))

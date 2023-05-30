@@ -37,21 +37,21 @@ class BotFuncs:
         self.bot.send_message(self.message.chat.id, 'Напиши нам свой честный отзыв, критику или предложения!',
                          reply_markup=markup)
 
-    def back_request(self):
-        first = self.message
+    def back_request(self, message):
+        first = message
         new_message = first.text
 
-        if self.message.chat.id == 621413330:
+        if message.chat.id == 621413330:
             if new_message == 'Назад' or new_message == 'назад':
                 self.menu()
             elif have_bad_words(new_message.lower()):
                 # to_chat_id = '621413330'  # Я
                 to_chat_id = '-1001554738139'  # Канал
-                self.bot.forward_message(to_chat_id, self.message.chat.id, self.message.message_id)
-                self.bot.send_message(self.message.chat.id, 'Спасибо за обратную связь!')
+                self.bot.forward_message(to_chat_id, message.chat.id, message.message_id)
+                self.bot.send_message(message.chat.id, 'Спасибо за обратную связь!')
                 self.menu()
             else:
-                self.bot.send_message(self.message.chat.id, f'Ай-ай-ай, {self.message.from_user.first_name}, как не стыдно?')
+                self.bot.send_message(message.chat.id, f'Ай-ай-ай, {message.from_user.first_name}, как не стыдно?')
                 self.menu()
         else:
             if new_message == 'Назад' or new_message == 'назад':
@@ -59,9 +59,9 @@ class BotFuncs:
             elif have_bad_words(new_message.lower()):
                 to_chat_id = '621413330'  # Я
                 # to_chat_id = '-1001554738139'  # Канал
-                self.bot.forward_message(to_chat_id, self.message.chat.id, self.message.message_id)
+                self.bot.forward_message(to_chat_id, message.chat.id, message.message_id)
                 self.bot.send_message(self.message.chat.id, 'Спасибо за обратную связь!')
                 self.menu()
             else:
-                self.bot.send_message(self.message.chat.id, f'Ай-ай-ай, {self.message.from_user.first_name}, как не стыдно?')
+                self.bot.send_message(message.chat.id, f'Ай-ай-ай, {message.from_user.first_name}, как не стыдно?')
                 self.menu()
