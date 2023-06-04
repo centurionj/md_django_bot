@@ -69,10 +69,8 @@ def bot_massage(message):
     elif text == 'назад':
         bot_foo.menu()
     elif text == 'обратная связь':
-
         bot_foo.back_btn()
         send = bot.send_message(message.chat.id, 'Если выбрал этот пункт по ошибке, нажми «Назад»')
-        print(1)
         bot.register_next_step_handler(send, bot_foo.back_request)
     else:
         obj.send_mes(19, message, bot)
@@ -80,11 +78,11 @@ def bot_massage(message):
 
 class Command(BaseCommand):
     help = 'Лагерный бот'
-    bot.polling(none_stop=True)
 
-    # def handle(self, *args, **options):
-    #     while True:
-    #         try:
-    #             bot.polling(none_stop=True)
-    #         except Exception as e:
-    #             print(str(e))
+    def handle(self, *args, **options):
+        while True:
+            try:
+                bot.polling(none_stop=True)
+            except Exception as e:
+                print(str(e))
+                print(1)
