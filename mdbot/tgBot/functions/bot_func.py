@@ -42,21 +42,19 @@ class BotFuncs:
         new_message = first.text
 
         if message.chat.id == 621413330:
-            if new_message == 'Назад' or new_message == 'назад':
+            if new_message.lower() == 'назад':
                 self.menu()
 
-            to_chat_id = '621413330'  # Я
-            #to_chat_id = '-1001554738139'  # Канал
+            to_chat_id = '-1001554738139'  # Канал
             self.bot.forward_message(to_chat_id, message.chat.id, message.message_id)
             self.bot.send_message(message.chat.id, 'Спасибо за обратную связь!')
             self.menu()
 
         else:
-            if new_message == 'Назад' or new_message == 'назад':
+            if new_message.lower() == 'назад':
                 self.menu()
             elif have_bad_words(new_message.lower()):
                 to_chat_id = '621413330'  # Я
-                # to_chat_id = '-1001554738139'  # Канал
                 self.bot.forward_message(to_chat_id, message.chat.id, message.message_id)
                 self.bot.send_message(self.message.chat.id, 'Спасибо за обратную связь!')
                 self.menu()

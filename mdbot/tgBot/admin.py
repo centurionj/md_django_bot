@@ -7,10 +7,10 @@ from .models import SendData, UserId
 
 @admin.register(SendData)
 class AdminSendData(admin.ModelAdmin):
-    list_display = ('id', 'text', 'file', 'description')
+    list_display = ('text', 'file', 'description')
 
 
 @admin.register(UserId)
 class AdminUserId(admin.ModelAdmin):
-    list_display = ('id', 'name_from_tg', 'user_id')
+    list_display = ('name_from_tg', 'user_id')
 

@@ -43,9 +43,7 @@ def bot_massage(message):
 
         obj.send_mes(1)
         bot.send_message(message.chat.id, 'Документы:')
-        # docs for workers
-        for n in range(2, 5):
-            obj.send_doc(n)
+        obj.send_doc(2, 5)
     elif text == 'детям':
         obj.send_mes(5)
     elif text == 'вакансии':
@@ -60,8 +58,7 @@ def bot_massage(message):
         obj.send_doc(10)
     # docs for parents
     elif text == 'документы':
-        for n in range(11, 17):
-            obj.send_doc(n)
+        obj.send_doc(11, 17)
     elif text == 'стоимость':
         obj.send_doc(17)
     elif text == 'спам':
@@ -78,11 +75,12 @@ def bot_massage(message):
 
 class Command(BaseCommand):
     help = 'Лагерный бот'
+    bot.polling(none_stop=True)
 
-    def handle(self, *args, **options):
-        while True:
-            try:
-                bot.polling(none_stop=True)
-            except Exception as e:
-                print(str(e))
-                print(1)
+    # def handle(self, *args, **options):
+    #     while True:
+    #         try:
+    #             bot.polling(none_stop=True)
+    #         except Exception as e:
+    #             print(str(e))
+    #             print(1)
