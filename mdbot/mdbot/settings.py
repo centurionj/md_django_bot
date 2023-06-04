@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-lr5dpg3!k6%$dr-^zn-jl8(@_y3f7t%9g(w^(l)r&_y4*(&wq6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',
+                 '0.0.0.0',
+                 ]
 
 
 # Application definition
@@ -125,5 +127,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'documents')
 
-TOKEN = '6123263886:AAFXdqCKHSuvh1hSBU4yyAQt7HY63EIZQdQ' # test
-#TOKEN = '6211845495:AAGNKCv8AzgCIopAsLbCEPG7xyj6eGFlz-s' #real bot
+#TOKEN = '6123263886:AAFXdqCKHSuvh1hSBU4yyAQt7HY63EIZQdQ' # test
+TOKEN = '6211845495:AAGNKCv8AzgCIopAsLbCEPG7xyj6eGFlz-s' #real bot
