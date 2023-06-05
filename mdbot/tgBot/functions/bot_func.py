@@ -44,11 +44,11 @@ class BotFuncs:
         if message.chat.id == 621413330:
             if new_message.lower() == 'назад':
                 self.menu()
-
-            to_chat_id = '-1001554738139'  # Канал
-            self.bot.forward_message(to_chat_id, message.chat.id, message.message_id)
-            self.bot.send_message(message.chat.id, 'Спасибо за обратную связь!')
-            self.menu()
+            else:
+                to_chat_id = '-1001554738139'  # Канал
+                self.bot.forward_message(to_chat_id, message.chat.id, message.message_id)
+                self.bot.send_message(message.chat.id, 'Переслал')
+                self.menu()
 
         else:
             if new_message.lower() == 'назад':

@@ -56,12 +56,12 @@ def bot_massage(message):
         bot_foo.parent_btns()
     elif text == 'о сменах':
         obj.send_mes(9)
-        obj.send_doc(10)
+        obj.send_doc(10, 11)
     # docs for parents
     elif text == 'документы':
         obj.send_doc(11, 17)
     elif text == 'стоимость':
-        obj.send_doc(17)
+        obj.send_doc(17, 18)
     elif text == 'спам':
         obj.spam()
     elif text == 'назад':
@@ -76,7 +76,7 @@ def bot_massage(message):
 
 class Command(BaseCommand):
     help = 'Лагерный бот'
-    bot.polling(none_stop=True)
+    # bot.polling(none_stop=True)
 
     def handle(self, *args, **options):
         while True:
