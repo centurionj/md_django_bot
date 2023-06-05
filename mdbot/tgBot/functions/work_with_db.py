@@ -1,3 +1,5 @@
+import logging
+
 from tgBot.models import SendData, UserId
 
 from pathlib import Path
@@ -20,7 +22,7 @@ class Sender:
                 else:
                     self.bot.send_photo(self.message.chat.id, media, caption=s)
             except Exception as e:
-                print(e)
+                logging.exception(e)
                 self.bot.send_message(self.message.chat.id, s)
 
     def send_doc(self, start, stop):
@@ -32,7 +34,7 @@ class Sender:
                     media = d.file.file
                     file_paths.append(telebot.types.InputMediaDocument(open(Path(f'{media}'), 'rb')))
                 except Exception as e:
-                    print(e)
+                    logging.exception(e)
         self.bot.send_media_group(self.message.chat.id, file_paths)
 
     def spam(self):
@@ -53,7 +55,7 @@ class Sender:
                         else:
                             self.bot.send_photo(to_chat_id, file, caption=s)
                 except Exception as e:
-                    print(e)
+                    logging.exception(e)
                     self.bot.send_message(to_chat_id, s)
 
     def check_and_add_user(self, user_id, name):

@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand
 from django.conf import settings
 
 import time
+import logging
 
 from telebot import TeleBot
 
@@ -77,10 +78,9 @@ class Command(BaseCommand):
     help = 'Лагерный бот'
     bot.polling(none_stop=True)
 
-    # def handle(self, *args, **options):
-    #     while True:
-    #         try:
-    #             bot.polling(none_stop=True)
-    #         except Exception as e:
-    #             print(str(e))
-    #             print(1)
+    def handle(self, *args, **options):
+        while True:
+            try:
+                bot.polling(none_stop=True)
+            except Exception as e:
+                logging.exception(e)

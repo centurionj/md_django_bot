@@ -127,5 +127,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'documents')
 
-#TOKEN = '6123263886:AAFXdqCKHSuvh1hSBU4yyAQt7HY63EIZQdQ' # test
-TOKEN = '6211845495:AAGNKCv8AzgCIopAsLbCEPG7xyj6eGFlz-s' #real bot
+TOKEN = '6123263886:AAFXdqCKHSuvh1hSBU4yyAQt7HY63EIZQdQ' # test
+#TOKEN = '6211845495:AAGNKCv8AzgCIopAsLbCEPG7xyj6eGFlz-s' #real bot
