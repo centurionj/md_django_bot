@@ -76,7 +76,6 @@ def bot_massage(message):
 
 class Command(BaseCommand):
     help = 'Лагерный бот'
-    # bot.polling(none_stop=True)
 
     def handle(self, *args, **options):
         while True:
