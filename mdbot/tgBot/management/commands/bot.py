@@ -17,11 +17,8 @@ def start(message):
     obj = Sender(message, bot)
     bot_foo = BotFuncs(message, bot)
 
-    user_id = message.from_user.id
-    name = message.from_user.first_name
 
-    obj.check_and_add_user(user_id, name)
-    bot.send_message(message.chat.id, f'Здравствуй, {name}! \n \n' +
+    bot.send_message(message.chat.id, f'Здравствуй, {message.from_user.first_name}! \n \n' +
 
                      """Детское учреждение «Мир Детства» не стоит на месте, а активно продвигается в информационном пространстве. На этой ресурсной площадке мы сможем еще больше освещать самые яркие знаковые события из жизни детей на летних сменах, а также предоставить для вас исчерпывающую информацию о летнем отдыхе детей в нашем учреждении. Уверенны, что Ваша активность сделает нашу совместную работу полезной и содержательной!
                      
@@ -30,6 +27,7 @@ def start(message):
                      Больше информации на сайте https://mirdetstvakhv.ru""")
 
     time.sleep(1)
+    obj.check_and_add_user(message)
     bot_foo.menu()
 
 

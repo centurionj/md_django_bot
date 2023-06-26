@@ -58,12 +58,16 @@ class Sender:
                     logging.exception(e)
                     self.bot.send_message(to_chat_id, s)
 
-    def check_and_add_user(self, user_id, name):
+    def check_and_add_user(self, message):
+        user_id = message.from_user.id
+        name = message.from_user.first_name
         try:
             user = UserId.objects.get(user_id=user_id)
-            print("Пользователь уже существует в базе данных.")
+            s = "Вы уже добавлены в базу данных для рассылок."
+            self.bot.send_message(self.message.chat.id, s)
         except UserId.DoesNotExist:
 
             new_user = UserId(user_id=user_id, name_from_tg=name)
             new_user.save()
-            print("Пользователь успешно добавлен в базу данных.")
+            s = "Вы успешно добавлены в базу данных для рассылок."
+            self.bot.send_message(self.message.chat.id, s)

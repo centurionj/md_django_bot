@@ -1,11 +1,15 @@
 from telebot import types
 
 from tgBot.functions.BadWordsChecker import have_bad_words
+from tgBot.functions.work_with_db import Sender
 
 class BotFuncs:
+
     def __init__(self, message, bot):
         self.message = message
         self.bot = bot
+
+
 
     def menu(self):
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=3)
@@ -38,11 +42,15 @@ class BotFuncs:
                          reply_markup=markup)
 
     def back_request(self, message):
+        obj = Sender(self.message, self.bot)
         first = message
         new_message = first.text
 
         if message.chat.id == 621413330:
             if new_message.lower() == 'назад':
+                self.menu()
+            elif new_message.lower() == '/start':
+                obj.check_and_add_user(message)
                 self.menu()
             else:
                 to_chat_id = '-1001554738139'  # Канал
@@ -52,6 +60,9 @@ class BotFuncs:
 
         else:
             if new_message.lower() == 'назад':
+                self.menu()
+            elif new_message.lower() == '/start':
+                obj.check_and_add_user(message)
                 self.menu()
             elif have_bad_words(new_message.lower()):
                 to_chat_id = '621413330'  # Я
